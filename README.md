@@ -1,16 +1,18 @@
+<!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>نظام دفع خدمات الكهرباء والطاقة</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f8ff;
-            padding: 20px;
+            padding: 10px;
+            margin: 0;
         }
         .container {
-            max-width: 500px;
+            max-width: 400px;
             margin: auto;
             background-color: #fff;
             padding: 20px;
@@ -19,32 +21,45 @@
         }
         h2 {
             text-align: center;
-            color: #0073e6; /* لون أزرق */
+            color: #0073e6;
+            font-size: 20px;
         }
         label {
             display: block;
-            margin-top: 15px;
+            margin-top: 10px;
+            font-size: 14px;
         }
-        input[type="text"], input[type="number"], select {
+        input[type="tel"], input[type="number"], select {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin-top: 5px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="tel"] {
+            text-align: left;
+            direction: ltr;
         }
         button {
             width: 100%;
-            padding: 12px;
-            background-color: #0073e6; /* لون أزرق */
+            padding: 15px;
+            background-color: #0073e6;
             color: #fff;
             border: none;
             border-radius: 5px;
             margin-top: 20px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
         }
         button:hover {
-            background-color: #005bb5; /* لون أزرق داكن عند التمرير */
+            background-color: #005bb5;
+        }
+        .note {
+            text-align: center;
+            font-size: 12px;
+            color: #555;
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -63,13 +78,14 @@
         </select>
 
         <label for="phoneNumber">رقم الهاتف (Orange Money)</label>
-        <input type="text" id="phoneNumber" placeholder="078XXXXXXXX" required>
+        <input type="tel" id="phoneNumber" placeholder="078XXXXXXXX" pattern="[0-9]{10}" required>
 
         <label for="amount">المبلغ بالدينار الأردني</label>
-        <input type="number" id="amount" placeholder="أدخل المبلغ" required>
+        <input type="number" id="amount" placeholder="أدخل المبلغ" min="1" required>
 
         <button type="button" onclick="processPayment()">ادفع الآن</button>
     </form>
+    <div class="note">يرجى التأكد من تعبئة جميع الحقول بشكل صحيح قبل الدفع.</div>
 </div>
 
 <script>
